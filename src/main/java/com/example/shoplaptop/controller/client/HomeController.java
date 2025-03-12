@@ -2,6 +2,7 @@ package com.example.shoplaptop.controller.client;
 
 import java.util.List;
 
+import org.springframework.boot.actuate.autoconfigure.observation.ObservationProperties.Http;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,7 @@ import com.example.shoplaptop.domain.dto.RegisterDTO;
 import com.example.shoplaptop.service.ProductService;
 import com.example.shoplaptop.service.UserService;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.PostMapping;

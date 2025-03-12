@@ -1,5 +1,5 @@
 (function ($) {
-  "use strict";
+  ("use strict");
 
   // Spinner
   var spinner = function () {
@@ -125,21 +125,5 @@
     $("#videoModal").on("hide.bs.modal", function (e) {
       $("#video").attr("src", $videoSrc);
     });
-  });
-
-  // Product Quantity
-  $(".quantity button").on("click", function () {
-    var button = $(this);
-    var oldValue = button.parent().parent().find("input").val();
-    if (button.hasClass("btn-plus")) {
-      var newVal = parseFloat(oldValue) + 1;
-    } else {
-      if (oldValue > 0) {
-        var newVal = parseFloat(oldValue) - 1;
-      } else {
-        newVal = 0;
-      }
-    }
-    button.parent().parent().find("input").val(newVal);
   });
 })(jQuery);

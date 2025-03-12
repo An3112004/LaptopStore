@@ -1,5 +1,6 @@
 package com.example.shoplaptop.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -13,13 +14,24 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "orders")
-public class Order {
-    
+public class Order implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
+
     private double totalPrice;
 
+    private String receiverName;
+
+    private String receiverAddress;
+
+    private String receiverPhone;
+
+    private String status;
+
+    // user id
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -27,21 +39,11 @@ public class Order {
     @OneToMany(mappedBy = "order")
     private List<OrderDetail> orderDetails;
 
-
-    public Order(Long id, double totalPrice, User user) {
-        this.id = id;
-        this.totalPrice = totalPrice;
-        this.user = user;
-    }
-
-    public Order() {
-    }
-
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -53,6 +55,38 @@ public class Order {
         this.totalPrice = totalPrice;
     }
 
+    public String getReceiverName() {
+        return receiverName;
+    }
+
+    public void setReceiverName(String receiverName) {
+        this.receiverName = receiverName;
+    }
+
+    public String getReceiverAddress() {
+        return receiverAddress;
+    }
+
+    public void setReceiverAddress(String receiverAddress) {
+        this.receiverAddress = receiverAddress;
+    }
+
+    public String getReceiverPhone() {
+        return receiverPhone;
+    }
+
+    public void setReceiverPhone(String receiverPhone) {
+        this.receiverPhone = receiverPhone;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public User getUser() {
         return user;
     }
@@ -61,10 +95,17 @@ public class Order {
         this.user = user;
     }
 
-    @Override
-    public String toString() {
-        return "Order [id=" + id + ", totalPrice=" + totalPrice + ", user_id=" + user.getId() + "]";
+    public List<OrderDetail> getOrderDetails() {
+        return orderDetails;
     }
 
-    
+    public void setOrderDetails(List<OrderDetail> orderDetails) {
+        this.orderDetails = orderDetails;
+    }
+
+    @Override
+    public String toString() {
+        return "Order [id=" + id + ", totalPrice=" + totalPrice + "]";
+    }
+
 }

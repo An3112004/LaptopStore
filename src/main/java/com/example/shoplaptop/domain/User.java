@@ -129,4 +129,8 @@ public class User {
                 + address + ", phone=" + phone + ", avatar=" + ", role_id=" + role.getId() + "]";
     }
 
+    public Cart getCart() {
+        return cart;
+    }
+
 }
